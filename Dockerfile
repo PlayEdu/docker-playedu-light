@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN mkdir /app
 
 WORKDIR /app
-RUN git clone -b v1.3 https://github.com/PlayEdu/PlayEdu.git playedu
+RUN git clone -b v1.4 https://github.com/PlayEdu/PlayEdu.git playedu
 
 # 编译jar包
 WORKDIR /app/playedu
@@ -23,9 +23,9 @@ RUN apk update && \
 
 # 编译后端
 WORKDIR /app
-RUN git clone -b v1.3 https://github.com/PlayEdu/backend.git backend
-RUN git clone -b v1.3 https://github.com/PlayEdu/frontend.git pc
-RUN git clone -b v1.3 https://github.com/PlayEdu/h5.git h5
+RUN git clone -b v1.4 https://github.com/PlayEdu/backend.git backend
+RUN git clone -b v1.4 https://github.com/PlayEdu/frontend.git pc
+RUN git clone -b v1.4 https://github.com/PlayEdu/h5.git h5
 
 # 编译后台
 WORKDIR /app/backend
@@ -43,8 +43,8 @@ FROM eclipse-temurin:17
 
 LABEL maintainer="0xtyz <tengyongzhi@meedu.vip>"
 
-#使用东八区时间环境
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 使用东八区时间环境
+RUN echo "Asia/Shanghai" > /etc/timezone
 
 #安装基本组件
 RUN apt update && apt install -y nginx
