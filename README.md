@@ -7,7 +7,12 @@
 在命令行中执行：
 
 ```
-docker run -d -p 9700:80 -p 9800:9800 -p 9801:9801 -p 9900:9900 --name playedu-light \
+docker run -d --restart=always \
+  --name playedu-light \
+  -p 9700:80 \
+  -p 9800:9800 \
+  -p 9801:9801 \
+  -p 9900:9900 \
   -e DB_HOST=数据库host \
   -e DB_PORT=数据库端口 \
   -e DB_NAME=数据库名 \
@@ -16,7 +21,10 @@ docker run -d -p 9700:80 -p 9800:9800 -p 9801:9801 -p 9900:9900 --name playedu-l
   -e REDIS_HOST=Redis的host \
   -e REDIS_PORT=Redis的端口 \
   -e REDIS_PASS=redis的密码 \
-  registry.cn-hangzhou.aliyuncs.com/playedu/light:1.3
+  -e REDIS_DB=2 \
+  -e SA_TOKEN_IS_CONCURRENT=false \
+  -e SA_TOKEN_JWT_SECRET_KEY=playeduxyz \
+  registry.cn-hangzhou.aliyuncs.com/playedu/light:1.5
 ```
 
 跑起来之后，可以通过下面的链接访问前后台：

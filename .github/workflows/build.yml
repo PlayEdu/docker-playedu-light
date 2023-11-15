@@ -34,4 +34,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ env.IMAGE_FQDN }}:1.4
+            ${{ env.IMAGE_FQDN }}:1.5
