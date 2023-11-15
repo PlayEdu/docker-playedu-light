@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN mkdir /app
 
 WORKDIR /app
-RUN git clone -b v1.5 https://github.com/PlayEdu/PlayEdu.git playedu
+RUN git clone -b 1.5 https://github.com/PlayEdu/PlayEdu.git playedu
 
 # 编译jar包
 WORKDIR /app/playedu
@@ -23,9 +23,9 @@ RUN apk update && \
 
 # 编译后端
 WORKDIR /app
-RUN git clone -b v1.5 https://github.com/PlayEdu/backend.git backend
-RUN git clone -b v1.5 https://github.com/PlayEdu/frontend.git pc
-RUN git clone -b v1.5 https://github.com/PlayEdu/h5.git h5
+RUN git clone -b 1.5 https://github.com/PlayEdu/backend.git backend
+RUN git clone -b 1.5 https://github.com/PlayEdu/frontend.git pc
+RUN git clone -b 1.5 https://github.com/PlayEdu/h5.git h5
 
 # 编译后台
 WORKDIR /app/backend
