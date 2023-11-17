@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN mkdir /app
 
 WORKDIR /app
-RUN git clone -b 1.5 https://github.com/PlayEdu/PlayEdu.git playedu
+RUN git clone -b 1.5.1 https://github.com/PlayEdu/PlayEdu.git playedu
 
 # 编译jar包
 WORKDIR /app/playedu
