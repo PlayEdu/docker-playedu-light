@@ -33,8 +33,6 @@ RUN echo "Asia/Shanghai" > /etc/timezone
 #安装基本组件
 RUN apt update && apt install -y nginx
 
-RUN mkdir /app
-
 COPY docker/start.sh /app/api/start.sh
 
 RUN mv /app/app.jar /app/api/app.jar
