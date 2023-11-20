@@ -1,19 +1,3 @@
-FROM eclipse-temurin:17 as ApiBuilder
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
-
-RUN mkdir /app
-
-WORKDIR /app
-RUN git clone -b 1.5.1 https://github.com/PlayEdu/PlayEdu.git playedu
-
-# 编译jar包
-WORKDIR /app/playedu
-
-RUN /app/playedu/mvnw -Dmaven.test.skip=true clean package
-
 FROM node:20-alpine as NodeBuilder
 
 # install git - apt-get replace with apk
@@ -39,9 +23,9 @@ RUN npm i && VITE_APP_URL=/api/ npm run build
 WORKDIR /app/h5
 RUN npm i && VITE_APP_URL=/api/ npm run build
 
-FROM eclipse-temurin:17
+FROM registry.cn-hangzhou.aliyuncs.com/playedu/api:1.5.2
 
-LABEL maintainer="0xtyz <tengyongzhi@meedu.vip>"
+LABEL maintainer="滕勇志 <tengyongzhi@meedu.vip>"
 
 # 使用东八区时间环境
 RUN echo "Asia/Shanghai" > /etc/timezone
@@ -53,7 +37,7 @@ RUN mkdir /app
 
 COPY docker/start.sh /app/api/start.sh
 
-COPY --from=ApiBuilder /app/playedu/playedu-api/target/playedu-api.jar /app/api/app.jar
+RUN mv /app/app.jar /app/api/app.jar
 
 COPY --from=NodeBuilder /app/backend/dist /app/backend
 COPY --from=NodeBuilder /app/pc/dist /app/frontend
