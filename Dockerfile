@@ -7,9 +7,9 @@ RUN apk update && \
 
 # 编译后端
 WORKDIR /app
-RUN git clone -b 1.5 https://github.com/PlayEdu/backend.git backend
-RUN git clone -b 1.5 https://github.com/PlayEdu/frontend.git pc
-RUN git clone -b 1.5 https://github.com/PlayEdu/h5.git h5
+RUN git clone -b 1.6 https://github.com/PlayEdu/backend.git backend
+RUN git clone -b 1.6 https://github.com/PlayEdu/frontend.git pc
+RUN git clone -b 1.6 https://github.com/PlayEdu/h5.git h5
 
 # 编译后台
 WORKDIR /app/backend
@@ -23,7 +23,7 @@ RUN npm i && VITE_APP_URL=/api/ npm run build
 WORKDIR /app/h5
 RUN npm i && VITE_APP_URL=/api/ npm run build
 
-FROM registry.cn-hangzhou.aliyuncs.com/playedu/api:1.5.2
+FROM registry.cn-hangzhou.aliyuncs.com/playedu/api:1.6
 
 LABEL maintainer="滕勇志 <tengyongzhi@meedu.vip>"
 

@@ -24,7 +24,7 @@ docker run -d --restart=always \
   -e REDIS_DB=2 \
   -e SA_TOKEN_IS_CONCURRENT=false \
   -e SA_TOKEN_JWT_SECRET_KEY=playeduxyz \
-  registry.cn-hangzhou.aliyuncs.com/playedu/light:1.5.1
+  registry.cn-hangzhou.aliyuncs.com/playedu/light:1.6
 ```
 
 跑起来之后，可以通过下面的链接访问前后台：
